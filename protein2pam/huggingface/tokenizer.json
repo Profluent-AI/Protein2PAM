@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "truncation": null,
+  "padding": {
+    "strategy": "BatchLongest",
+    "direction": "Right",
+    "pad_to_multiple_of": null,
+    "pad_id": 1,
+    "pad_type_id": 0,
+    "pad_token": "<pad>"
+  },
+  "added_tokens": [
+    {
+      "id": 0,
+      "special": true,
+      "content": "<cls>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false
+    },
+    {
+      "id": 1,
+      "special": true,
+      "content": "<pad>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false
+    },
+    {
+      "id": 2,
+      "special": true,
+      "content": "<eos>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false
+    },
+    {
+      "id": 3,
+      "special": true,
+      "content": "<unk>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false
+    },
+    {
+      "id": 32,
+      "special": true,
+      "content": "<mask>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false
+    }
+  ],
+  "normalizer": null,
+  "pre_tokenizer": {
+    "type": "ByteLevel",
+    "add_prefix_space": false,
+    "trim_offsets": true
+  },
+  "post_processor": {
+    "type": "BertProcessing",
+    "cls": ["<cls>", 0],
+    "sep": ["<eos>", 2]
+  },
+  "decoder": {
+    "type": "ByteLevel",
+    "add_prefix_space": true,
+    "trim_offsets": true
+  },
+  "model": {
+    "type": "BPE",
+    "dropout": null,
+    "unk_token": null,
+    "continuing_subword_prefix": null,
+    "end_of_word_suffix": null,
+    "fuse_unk": false,
+    "vocab": {
+      "<cls>": 0,
+      "<pad>": 1,
+      "<eos>": 2,
+      "<unk>": 3,
+      "L": 4,
+      "A": 5,
+      "G": 6,
+      "V": 7,
+      "S": 8,
+      "E": 9,
+      "R": 10,
+      "T": 11,
+      "I": 12,
+      "D": 13,
+      "P": 14,
+      "K": 15,
+      "Q": 16,
+      "N": 17,
+      "F": 18,
+      "Y": 19,
+      "M": 20,
+      "H": 21,
+      "W": 22,
+      "C": 23,
+      "X": 24,
+      "B": 25,
+      "U": 26,
+      "Z": 27,
+      "O": 28,
+      ".": 29,
+      "-": 30,
+      "<null_1>": 31,
+      "<mask>": 32
+    },
+    "merges": []
+  }
+}

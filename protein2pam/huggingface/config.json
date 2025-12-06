@@ -1,0 +1,50 @@
+{
+  "architectures": [
+    "EsmForSequenceClassification"
+  ],
+  "attention_probs_dropout_prob": 0.0,
+  "classifier_dropout": null,
+  "emb_layer_norm_before": false,
+  "esmfold_config": null,
+  "head_activation": "relu",
+  "head_dropout_prob": 0.2,
+  "head_num_hidden_layers": 2,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 1280,
+  "id2label": {
+    "0": "A",
+    "1": "C",
+    "2": "G",
+    "3": "T"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 5120,
+  "is_folding_model": false,
+  "label2id": {
+    "A": 0,
+    "C": 1,
+    "G": 2,
+    "T": 3
+  },
+  "layer_norm_eps": 1e-05,
+  "mask_token_id": 32,
+  "max_position_embeddings": 1026,
+  "model_type": "esm",
+  "num_attention_heads": 20,
+  "num_hidden_layers": 33,
+  "output_shape": [
+    10,
+    4
+  ],
+  "pad_token_id": 1,
+  "position_embedding_type": "rotary",
+  "problem_type": "single_label_classification",
+  "token_dropout": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "use_flash_attn": null,
+  "vocab_list": null,
+  "vocab_size": 33
+}

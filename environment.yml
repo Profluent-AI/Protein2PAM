@@ -1,0 +1,71 @@
+name: protein2pam
+channels:
+  - conda-forge
+  - bioconda
+  - nvidia
+  - pytorch
+  - senyan.dev
+dependencies: 
+  - conda-forge::pip
+  - conda-forge::python=3.8.*
+  - conda-forge::setuptools
+  - nvidia::cuda-cudart=11.8.89=0
+  - nvidia::cuda-cupti=11.8.87=0
+  - nvidia::cuda-libraries=11.8.0=0
+  - nvidia::cuda-nvrtc=11.8.89=0
+  - nvidia::cuda-nvtx=11.8.86=0
+  - nvidia::cuda-runtime=11.8.0=0
+  - conda-forge::cudatoolkit=11.8.0=h37601d7_11
+  - senyan.dev::cudatoolkit-dev=11.8.0=h1fa729e_6
+  - pytorch::pytorch=2.0.1=py3.8_cuda11.8_cudnn8.7.0_0
+  - pytorch::pytorch-cuda=11.8=h7e8668a_5
+  - pytorch::pytorch-mutex=1.0=cuda
+  - pytorch::torchaudio=2.0.2=py38_cu118
+  - pytorch::torchtriton=2.0.0=py38
+  - pytorch::torchvision=0.15.2=py38_cu118
+  - bioconda::mmseqs2
+  - bioconda::kalign2==2.04
+  - conda-forge::openmm=7.5.1
+  - conda-forge::pdbfixer
+  - conda-forge::biotite=0.35.0=py38h26c90d9_1
+  - pip:
+      # General python deps
+      - black
+      - flake8
+      - isort
+      - jupyter
+      - matplotlib
+      - numpy>=1.20.0
+      - pandas
+      - seaborn>=0.12.0
+      - scikit-learn
+      - scipy
+      - tqdm
+      - pre-commit
+      - logomaker>=0.8
+      - fair-esm>=2.0.0
+      # Deep learning deps
+      - accelerate>=0.21.0
+      - bitsandbytes>=0.41.1
+      - einops>=0.6.0
+      - tensorboard
+      - transformers>=4.30
+      - tokenizers
+      - pynvml
+      - torch
+      - Levenshtein
+      - sparse
+      # GCP deps
+      - dvc[gs]
+      - scmrepo>=0.1.15  # avoids a bug in DVC
+      - google-cloud-storage
+      # Bio-related deps
+      - biopython>=1.79
+      - tmscoring>=0.4
+      - iminuit<2
+      - pyhmmer
+      # Flask API deps
+      - flask
+      - gunicorn
+      - Flask-Cors
+      
