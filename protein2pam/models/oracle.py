@@ -5,6 +5,7 @@ This module contains the Oracle class, which is used to evaluate the performance
 import os
 import logging
 import warnings
+from contextlib import nullcontext
 from abc import ABC, abstractmethod
 
 import torch
@@ -19,6 +20,14 @@ from protein2pam.utils.pams import PAM
 
 logger = logging.getLogger(__name__)
 warnings.filterwarnings("ignore", category=UserWarning, module="torch.amp")
+
+
+def _autocast(device_type, dtype):
+    """Autocast on CUDA only. CPU autocast only accepts bfloat16 in torch 2.0.x and raises
+    for any other dtype, which broke CPU-only runs (#1)."""
+    if device_type == "cuda":
+        return torch.amp.autocast(device_type=device_type, dtype=dtype)
+    return nullcontext()
 
 
 class Oracle(ABC):
@@ -157,7 +166,7 @@ class MarginalPAMOracle(Oracle):
         with torch.no_grad():
             device_type = 'cuda' if torch.cuda.is_available() else 'cpu'            
             dtype = torch.float32
-            with torch.amp.autocast(device_type=device_type, dtype=dtype):                
+            with _autocast(device_type, dtype):
                 outputs = self.model(sequences)
                 logp = F.log_softmax(outputs, dim=-1)
                 info = prob_to_info(torch.exp(logp), logp)
@@ -209,7 +218,7 @@ class MarginalPAMInfoSimOracle(Oracle):
         with torch.no_grad():
             device_type = 'cuda' if torch.cuda.is_available() else 'cpu'
             dtype = torch.float32
-            with torch.amp.autocast(device_type=device_type, dtype=dtype):
+            with _autocast(device_type, dtype):
                 if ten_nn_pct_id is not None:
                     result["percent_identities"] = ten_nn_pct_id
                     if not isinstance(ten_nn_pct_id, torch.Tensor):
